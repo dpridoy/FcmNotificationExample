@@ -9,6 +9,8 @@ import android.support.v4.app.NotificationManagerCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -22,7 +24,8 @@ public class MainActivity extends AppCompatActivity {
     private static final String CHANNEL_NAME="FCM_NOTIFICATION";
     private static final String CHANNEL_DESC="This is the description of FCM Notification";
 
-    private TextView textView;
+    private EditText editTextEmail,editTextPassword;
+    private Button buttonSignUp;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,7 +39,16 @@ public class MainActivity extends AppCompatActivity {
             manager.createNotificationChannel(channel);
         }
 
-        textView=(TextView)findViewById(R.id.buttonNotify);
+        editTextEmail=(EditText)findViewById(R.id.editTextEmail);
+        editTextPassword=(EditText)findViewById(R.id.editTextPassword);
+
+        //buttonSignUp=(Button)findViewById(R.id.ButtonSignUp);
+        findViewById(R.id.ButtonSignUp).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                
+            }
+        });
 
         FirebaseInstanceId.getInstance().getInstanceId()
                 .addOnCompleteListener(new OnCompleteListener<InstanceIdResult>() {
@@ -44,9 +56,9 @@ public class MainActivity extends AppCompatActivity {
                     public void onComplete(@NonNull Task<InstanceIdResult> task) {
                         if(task.isSuccessful()){
                             String token=task.getResult().getToken();
-                            textView.setText(token);
+
                         }else {
-                            textView.setText(task.getException().getMessage());
+
                         }
                     }
                 });
