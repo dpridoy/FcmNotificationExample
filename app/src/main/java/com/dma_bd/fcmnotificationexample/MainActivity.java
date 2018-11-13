@@ -26,7 +26,7 @@ import com.google.firebase.iid.InstanceIdResult;
 
 public class MainActivity extends AppCompatActivity {
 
-    private static final String CHANNEL_ID="Fcm_Example";
+    public static final String CHANNEL_ID="Fcm_Example";
     private static final String CHANNEL_NAME="FCM_NOTIFICATION";
     private static final String CHANNEL_DESC="This is the description of FCM Notification";
 
@@ -130,16 +130,5 @@ public class MainActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
-    private void displayNotification(){
 
-        NotificationCompat.Builder mBuilder=new NotificationCompat.Builder(this,CHANNEL_ID)
-                .setSmallIcon(R.mipmap.ic_launcher)
-                .setContentTitle("FCM Works..")
-                .setContentText("FCM works perfectly!!!")
-                .setPriority(NotificationCompat.PRIORITY_HIGH);
-
-        NotificationManagerCompat nMCompat=NotificationManagerCompat.from(this);
-        nMCompat.notify(1,mBuilder.build());
-
-    }
 }
