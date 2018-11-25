@@ -26,6 +26,8 @@ public class ProfileActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile);
 
+        //NotificationHelper.displayNotification(this,"title","body");
+
         mAuth=FirebaseAuth.getInstance();
 
         FirebaseMessaging.getInstance().subscribeToTopic("updates");
